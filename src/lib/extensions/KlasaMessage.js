@@ -259,7 +259,7 @@ module.exports = Structures.extend('Message', Message => {
 		 * @private
 		 */
 		_patch(data) {
-			super._patch(data);
+			const patch = super.patch(data);
 
 			/**
 			 * The language in this setting
@@ -276,6 +276,7 @@ module.exports = Structures.extend('Message', Message => {
 			this.guildSettings = this.guild ? this.guild.settings : this.client.gateways.guilds.defaults;
 
 			this._parseCommand();
+			return patch;
 		}
 
 		/**
