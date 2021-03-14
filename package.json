@@ -23,7 +23,7 @@
     "fs-nextra": "^0.4.7"
   },
   "peerDependencies": {
-    "discord.js": "^12.4.1"
+    "discord.js": "github:TBNRItzDogeORG/djs"
   },
   "devDependencies": {
     "@types/node": "^13.13.5",
