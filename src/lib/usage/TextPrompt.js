@@ -179,7 +179,7 @@ class TextPrompt {
 	 * @private
 	 */
 	async prompt(text) {
-		const message = await this.channel.send(text);
+		const message = await this.message.reply(text);
 		const responses = await message.channel.awaitMessages(msg => msg.author === this.target, { time: this.time, max: 1 });
 		message.delete();
 		if (responses.size === 0) throw this.message.language.get('MESSAGE_PROMPT_TIMEOUT');
@@ -197,11 +197,10 @@ class TextPrompt {
 		this._prompted++;
 		if (this.typing) this.message.channel.stopTyping();
 		const possibleAbortOptions = this.message.language.get('TEXT_PROMPT_ABORT_OPTIONS');
-		const edits = this.message.edits.length;
 		const message = await this.prompt(
 			this.message.language.get('MONITOR_COMMAND_HANDLER_REPROMPT', `<@!${this.target.id}>`, prompt, this.time / 1000, possibleAbortOptions)
 		);
-		if (this.message.edits.length !== edits || message.prefix || possibleAbortOptions.includes(message.content.toLowerCase())) throw this.message.language.get('MONITOR_COMMAND_HANDLER_ABORTED');
+		if (message.prefix || possibleAbortOptions.includes(message.content.toLowerCase())) throw this.message.language.get('MONITOR_COMMAND_HANDLER_ABORTED');
 
 		this.responses.set(message.id, message);
 
