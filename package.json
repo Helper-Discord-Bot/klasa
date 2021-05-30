@@ -20,10 +20,8 @@
     "docs": "npx dg --source src --custom guides/.docconfig.json --output dist/docs.json --logging"
   },
   "dependencies": {
+    "discord.js": "^13.0.0-dev.0",
     "fs-nextra": "^0.4.7"
-  },
-  "peerDependencies": {
-    "discord.js": "github:TBNRItzDogeORG/djs"
   },
   "devDependencies": {
     "@types/node": "^13.13.5",

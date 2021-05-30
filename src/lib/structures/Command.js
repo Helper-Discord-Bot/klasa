@@ -64,7 +64,10 @@ class Command extends AliasPiece {
 		 * @since 0.0.1
 		 * @type {external:Permissions}
 		 */
-		this.requiredPermissions = new Permissions(options.requiredPermissions).freeze();
+		this.requiredPermissions = new Permissions(
+			typeof options.requiredPermissions === 'bigint' ? options.requiredPermissions :
+				typeof options.requiredPermissions === 'number' ? BigInt(options.requiredPermissions) :
+					options.requiredPermissions).freeze();
 
 
 		/**

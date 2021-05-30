@@ -502,7 +502,7 @@ KlasaClient.plugin = Symbol('KlasaPlugin');
  * @since 0.5.0
  * @type {Permissions}
  */
-KlasaClient.basePermissions = new Permissions(3072);
+KlasaClient.basePermissions = new Permissions(3072n);
 
 /**
  * The default PermissionLevels
