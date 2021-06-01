@@ -179,7 +179,7 @@ class TextPrompt {
 	 * @private
 	 */
 	async prompt(text) {
-		const message = await this.message.reply(text);
+		const message = await this.channel.send(text, { reply: { messageReference: this.message, failIfNotExists: false } });
 		const responses = await message.channel.awaitMessages(msg => msg.author === this.target, { time: this.time, max: 1 });
 		message.delete();
 		if (responses.size === 0) throw this.message.language.get('MESSAGE_PROMPT_TIMEOUT');
